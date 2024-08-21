@@ -5,7 +5,8 @@
 ### GET /books
 - Retorna a lista de livros disponíveis.
 - **Exemplo de Requisição no Postman**:
-  ![GET Books](imagens/get-books.png)
+![image](https://github.com/user-attachments/assets/8f3be953-841d-4091-b595-f75bc7c1862e)
+
 
 ### POST /books
 - Cria um novo livro.
