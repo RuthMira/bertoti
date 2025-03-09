@@ -1,5 +1,3 @@
-package Stategy.code;
-
 public class Main {
     public static void main(String[] args) {
         // Guerreiro começa com ataque de espada

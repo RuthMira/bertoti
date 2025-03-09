@@ -1,5 +1,3 @@
-package Stategy.code;
-
 public class AtaqueEspada implements EstrategiaAtaque {
     @Override
     public void atacar() {

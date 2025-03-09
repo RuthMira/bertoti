@@ -1,5 +1,3 @@
-package Stategy.code;
-
 // Ataque com magia
 public class AtaqueMagia implements EstrategiaAtaque {
     @Override

@@ -1,5 +1,3 @@
-package Stategy.code;
-
 // Classe que usa uma estratégia de ataque
 public class Guerreiro {
     private EstrategiaAtaque estrategiaAtaque;
