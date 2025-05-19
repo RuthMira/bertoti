@@ -1,11 +1,11 @@
 # Ruth Mira
 
 <div align="center">
-  <img src="https://github.com/seu-usuario/seu-repositorio/blob/main/img/minha-foto.jpg?raw=true" 
-       alt="Minha Foto" 
+  <img src="img/perfil.jpg" 
+       alt="Foto de perfil" 
        width="200" 
-       style="border: 3px solid #4CAF50; border-radius: 50%; box-shadow: 0 4px 8px rgba(0,0,0,0.2);" />
-  <p><i>Desenvolvedor Backend</i></p>
+       style="border: 3px solid #007BFF; border-radius: 50%; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);" />
+  <p><i>Estudante de Banco de Dados | Desenvolvedora Full Stack</i></p>
 </div>
 
 ## Introdução
