@@ -1,54 +1,88 @@
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 interface Observer {
-    void update(String data);
+    void update(double temperature);
 }
 
-class ConcreteObserver implements Observer {
-    private String name;
 
-    public ConcreteObserver(String name) {
-        this.name = name;
+class Dashboard implements Observer {
+    public Dashboard() {
+        System.out.println("Dashboard created.");
     }
 
-    public void update(String data) {
-        System.out.println(name + " recebeu: " + data);
+    @Override
+    public void update(double temperature) {
+        fazerDash(temperature);
+    }
+
+    public void fazerDash(double temperature) {
+        System.out.println("Dashboard: Temperatura atualizada para " + temperature + "°C.");
     }
 }
 
-class Subject {
-    private List<Observer> observers = new ArrayList<>();
-    private String data;
-
-    public void attach(Observer o) {
-        observers.add(o);
+class Previsao implements Observer {
+    public Previsao() {
+        System.out.println("Previsao (Forecast) created.");
     }
 
-    public void detach(Observer o) {
-        observers.remove(o);
+    @Override
+    public void update(double temperature) {
+        fazerDash(temperature);
     }
 
-    public void setData(String data) {
-        this.data = data;
-        notifyObservers();
+    public void fazerDash(double temperature) {
+        System.out.println("Previsao: Temperatura recebida para previsão: " + temperature + "°C.");
+    }
+}
+
+
+class EstacaoMeteorologica {
+    private double temperatura;
+    private double precipitacao;
+    private List<Observer> observes; 
+
+    public EstacaoMeteorologica() {
+        this.observes = new ArrayList<>();
+        System.out.println("EstacaoMeteorologica (Weather Station) created.");
     }
 
-    private void notifyObservers() {
-        for (Observer o : observers) {
-            o.update(data);
+    public double getTemperatura() {
+        return temperatura;
+    }
+
+    public double getPrecipitacao() {
+        return precipitacao;
+    }
+
+
+    public void setTemperatura(double temperatura) {
+        System.out.println("\nEstacaoMeteorologica: Setting temperatura to " + temperatura + "°C.");
+        this.temperatura = temperatura;
+        notificar(); 
+    }
+
+    public void setPrecipitacao(double precipitacao) {
+        System.out.println("\nEstacaoMeteorologica: Setting precipitacao to " + precipitacao + "mm.");
+        this.precipitacao = precipitacao;
+    }
+
+    public void addOb(Observer observer) {
+        System.out.println("EstacaoMeteorologica: Adicionando observador: " + observer.getClass().getSimpleName());
+        observes.add(observer);
+    }
+
+    public void removerOb(Observer observer) {
+        System.out.println("EstacaoMeteorologica: Removendo observador: " + observer.getClass().getSimpleName());
+        observes.remove(observer);
+    }
+
+   
+    public void notificar() {
+        System.out.println("EstacaoMeteorologica: Notificando observadores...");
+        for (Observer observer : observes) {
+            observer.update(temperatura);
         }
     }
-}
-
-public class ObserverPattern {
-    public static void main(String[] args) {
-        Subject subject = new Subject();
-        Observer obs1 = new ConcreteObserver("Observer1");
-        Observer obs2 = new ConcreteObserver("Observer2");
-
-        subject.attach(obs1);
-        subject.attach(obs2);
-
-        subject.setData("Nova atualização");
-    }
+    
 }
