@@ -1,38 +1,61 @@
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
+// Interface base do padrão Composite
 interface Component {
-    void operation();
+    void imprimir(); // operação polimórfica
 }
 
+// Classe folha (Leaf)
 class Leaf implements Component {
-    public void operation() {
-        System.out.println("Operação na folha");
+    private String nome;
+
+    public Leaf(String nome) {
+        this.nome = nome;
+    }
+
+    @Override
+    public void imprimir() {
+        System.out.println("Folha: " + nome);
     }
 }
 
+// Classe composta (Composite)
 class Composite implements Component {
-    private List<Component> children = new ArrayList<>();
+    private String nome;
+    private List<Component> componentes = new ArrayList<>();
 
-    public void add(Component component) {
-        children.add(component);
+    public Composite(String nome) {
+        this.nome = nome;
     }
 
-    public void operation() {
-        for (Component c : children) {
-            c.operation();
+    public void add(Component componente) {
+        componentes.add(componente);
+    }
+
+    @Override
+    public void imprimir() {
+        System.out.println("Composto: " + nome);
+        for (Component componente : componentes) {
+            componente.imprimir(); // chamada polimórfica
         }
     }
 }
 
+// Classe principal com nome baseado no padrão
 public class CompositePattern {
     public static void main(String[] args) {
-        Leaf leaf1 = new Leaf();
-        Leaf leaf2 = new Leaf();
+        Component folha1 = new Leaf("Botão");
+        Component folha2 = new Leaf("Texto");
 
-        Composite composite = new Composite();
-        composite.add(leaf1);
-        composite.add(leaf2);
+        Composite painel = new Composite("Painel");
+        painel.add(folha1);
+        painel.add(folha2);
 
-        composite.operation();
+        Composite janela = new Composite("Janela");
+        janela.add(painel);
+        janela.add(new Leaf("Rodapé"));
+
+        janela.imprimir();
     }
 }
