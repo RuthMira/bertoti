@@ -1,11 +1,11 @@
 
-public class EstacaoMeteorologica {
+class ObserverAntiPattern {
     private double temperatura;
     private double precipitacao;
     private Dashboard dashboard;
     private Previsao previsao;
 
-    public EstacaoMeteorologica() {
+    public ObserverAntiPattern() {
         this.dashboard = new Dashboard();
         this.previsao = new Previsao();
     }
@@ -17,30 +17,30 @@ public class EstacaoMeteorologica {
     }
 
     private void notificar() {
-   
+  
         dashboard.fazerDashboard(temperatura, precipitacao);
         previsao.fazerDashboard(temperatura, precipitacao);
     }
 }
 
 
-public class Dashboard {
+class Dashboard {
     public void fazerDashboard(double temp, double preci) {
         System.out.println("Dashboard atualizado: Temp=" + temp + " / Precip=" + preci);
     }
 }
 
 
-public class Previsao {
+class Previsao {
     public void fazerDashboard(double temp, double preci) {
         System.out.println("Previsão baseada em Temp=" + temp);
     }
 }
 
 
-public class AntiPatternExample {
+public class ObserverAntipattern {
     public static void main(String[] args) {
-        EstacaoMeteorologica estacao = new EstacaoMeteorologica();
+        ObserverAntiPattern estacao = new ObserverAntiPattern();
         estacao.atualizarMedicoes(28.3, 9.1);
     }
 }

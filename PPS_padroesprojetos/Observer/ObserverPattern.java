@@ -5,7 +5,6 @@ interface Observer {
     void update(double temperature);
 }
 
-
 class Dashboard implements Observer {
     public Dashboard() {
         System.out.println("Dashboard created.");
