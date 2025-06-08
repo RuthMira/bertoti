@@ -1,4 +1,4 @@
-package PPS_padroesprojetos.Stategy;
+package PPS_padroesprojetos.Estrutura.Stategy;
 
 interface ModoDeMover {
     void mover();

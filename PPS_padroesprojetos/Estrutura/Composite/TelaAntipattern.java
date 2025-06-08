@@ -1,3 +1,4 @@
+package PPS_padroesprojetos.Estrutura.Composite;
 import javax.swing.*;
 
 public class TelaAntipattern extends JFrame {

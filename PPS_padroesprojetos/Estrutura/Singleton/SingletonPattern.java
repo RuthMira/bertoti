@@ -1,3 +1,4 @@
+package PPS_padroesprojetos.Estrutura.Singleton;
 class Singleton {
     private static Singleton instance;
 
